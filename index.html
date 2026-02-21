@@ -1,66 +1,111 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ÏE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify - your favourite music is here</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify - Your Favourite Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="top">
+  <header class="topbar">
+    <div class="brand">
+      <img src="Logo.jpg" alt="Logo">
+      <span>My Music</span>
+    </div>
     <nav>
-    <ul>
-        <li class="brand"><image src="Logo.jpg" alt="My Music">My Music</li>
-        <li>Home</li>
-        <li>About</li>
-    </ul>
+      <a id="homeLink" class="active-link" href="#top">Home</a>
+      <a id="libraryLink" href="#top">Library</a>
+      <a id="aboutLink" href="#about">About</a>
     </nav>
+  </header>
 
-    <div class="container">
-      <div class="SongList">
-        <h1>Best of DEBO - No Copyright Sounds</h1>
-        <div>
-            <div class="songItem">
-                <img src="coverpage/Khat.jpeg" alt="1">
-                <span>Khat</span>
-                <span class="songlistplay"><span class="timestamp">05:34<i class="far fa-2x fa-play-circle"></i></span></span>
-            </div>
-            <div class="songItem">
-                <img src="coverpage/Khat.jpeg" alt="1">
-                <span>Khat</span>
-                <span class="songlistplay"><span class="timestamp">05:34<i class="far fa-2x fa-play-circle"></i></span></span>
-            </div>
-            <div class="songItem">
-                <img src="coverpage/Khat.jpeg" alt="1">
-                <span>Khat</span>
-                <span class="songlistplay"><span class="timestamp">05:34<i class="far fa-2x fa-play-circle"></i></span></span>
-            </div>
-            <div class="songItem">
-                <img src="coverpage/Khat.jpeg" alt="1">
-                <span>Khat</span>
-                <span class="songlistplay"><span class="timestamp">05:34<i class="far fa-2x fa-play-circle"></i></span></span>
-            </div>
-            <div class="songItem">
-                <img src="coverpage/Khat.jpeg" alt="1">
-                <span>Khat</span>
-                <span class="songlistplay"><span class="timestamp">05:34<i class="far fa-2x fa-play-circle"></i></span></span>
-            </div>
-        </div>
+  <main id="homeSection" class="app-shell">
+    <section class="playlist-card">
+      <div class="playlist-head">
+        <h1>Best of DEBO</h1>
+        <p>No Copyright Sounds</p>
       </div>
-        <div class="SongBannner"></div>
+
+      <div id="songList" class="song-list"></div>
+    </section>
+
+    <aside class="now-playing-card">
+      <img id="heroCover" src="covers/10.jpg" alt="Now playing cover" class="hero-cover">
+      <div class="hero-meta">
+        <p class="meta-label">Now Playing</p>
+        <h2 id="currentSong">Khawne Gorachand Khawne Kaalaa</h2>
+      </div>
+    </aside>
+  </main>
+
+  <section id="about" class="about-section is-hidden">
+    <article class="about-card">
+      <button id="closeAboutBtn" class="close-about-btn" aria-label="Close About section">✕</button>
+      <h2>🎵 About My Music</h2>
+      <h3>Welcome to My Music - Best of DEBO</h3>
+      <p>
+        This platform is a personal music web project inspired by Spotify, created to deliver a smooth and enjoyable music streaming experience.
+        Here, you can explore a curated collection of my favorite tracks, trending songs, and no copyright sounds - all in one place.
+      </p>
+      <p>
+        This website is built as a front-end web development project using modern web technologies to create a responsive and interactive user interface.
+        It focuses on clean design, user-friendly navigation, and an immersive music experience.
+      </p>
+      <p>
+        Whether you love romantic songs, emotional tracks, or energetic beats - this space is for music lovers who enjoy discovering great sounds.
+      </p>
+
+      <h3>👩‍💻 About the Creator</h3>
+      <p>
+        Hi, I'm Debonkita Dutta, a passionate developer and music enthusiast.
+      </p>
+      <p>This project reflects my interest in:</p>
+      <ul>
+        <li>Web Development</li>
+        <li>UI/UX Design</li>
+        <li>Music Streaming Platforms</li>
+        <li>Creative Front-End Projects</li>
+      </ul>
+      <p>
+        I enjoy building interactive websites and improving my technical skills through practical projects like this Spotify-inspired music player.
+      </p>
+
+      <h3>📩 Contact Me</h3>
+      <p>If you have suggestions, feedback, or collaboration ideas, feel free to reach out:</p>
+      <p><strong>Email:</strong> debonkitadutta2025@gmail.com</p>
+      <p><strong>Phone:</strong> 8101571164</p>
+    </article>
+  </section>
+
+  <footer class="player-bar">
+    <div class="player-left">
+      <img id="footerCover" src="covers/10.jpg" alt="Current cover">
+      <div>
+        <p id="footerTitle">Khawne Gorachand Khawne Kaalaa</p>
+        <span id="footerArtist">DEBO Playlist</span>
+      </div>
     </div>
 
-    <div class="bottom">
-            <input type="range" name="range" id="myProgressBar" min="0" max="100">
-            <div class="icons">
-              <!--fontawesome icons-->
-              <i class="fas fa-3x fa-step-backward"></i>
-              <i class="far fa-3x fa-play-circle"></i>
-              <i class="fas fa-3x fa-step-forward"></i>
-            </div>
-        </div>
-    
-    <script src="https://kit.fontawesome.com/b42567812b.js" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <div class="player-center">
+      <div class="controls">
+        <button id="prevBtn" aria-label="Previous">&#9198;</button>
+        <button id="masterPlay" class="play" aria-label="Play or Pause">&#9654;</button>
+        <button id="nextBtn" aria-label="Next">&#9197;</button>
+      </div>
+      <input type="range" id="progressBar" min="0" max="100" value="0">
+    </div>
+
+    <div class="player-right">
+      <span id="currentTime">00:00</span>
+      <span>/</span>
+      <span id="totalTime">00:00</span>
+      <img id="playingGif" src="playing.gif" alt="Playing" class="playing-gif">
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

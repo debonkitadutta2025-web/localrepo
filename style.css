@@ -1,96 +1,568 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Varela+Round&display=swap');
-body{
-    background-color: rgb(71, 152, 152);
+﻿:root {
+  --bg: #0f0f10;
+  --panel: #181818;
+  --panel-soft: #202020;
+  --text: #ffffff;
+  --muted: #a7a7a7;
+  --accent: #1db954;
 }
 
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-nav{
-    font-family: "Ubuntu", sans-serif;
+body {
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 15% 10%, #1f5c3b 0%, transparent 35%),
+    radial-gradient(circle at 85% 90%, #123126 0%, transparent 35%),
+    var(--bg);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
-nav ul{
-    display: flex;
-    align-items: center;
-    list-style-type: none;
-    height: 65px;
-    background-color: black;
-    color: white;
+html {
+  scroll-behavior: smooth;
 }
 
-nav ul li{
-    padding: 0 12px;
-}
-.brand img{
-    width: 44px;
-    padding: 0 8px;
+.topbar {
+  height: 70px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  border-bottom: 1px solid #2a2a2a;
 }
 
 .brand {
-    display: flex;
-    align-items: center;
-    font-weight: bolder;
-    font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
-.container{
-    min-height: 72vh;
-    background-color: black;
-    color: white;
-    font-family: "Varela Round" , sans-serif;
-    display: flex;
-    margin: 23px auto;
-    width: 70%;
-    border-radius: 12px;
-    padding: 34px;
-    background-image: url('bg.jpg');
+.brand img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.bottom{
-    position: sticky;
-    height: 100px;
-    background-color:black ;
-    color: white;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+nav {
+  display: flex;
+  gap: 20px;
 }
 
-.icons{
-    margin-top: 14px;
-}
-.icons i{
-    cursor: pointer;
-}
-
-#myProgressBar{
-    width: 80vw; 
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
 }
 
-.songItem img{
-    height: 50px;
-    display: flex;
-    background-color: black;
-    width: 80%;
-    color: white;
-    margin: 12px 0;
+nav a:hover {
+  color: var(--text);
+}
+
+nav a.active-link {
+  color: var(--text);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2px;
+}
+
+.app-shell {
+  padding: 24px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(320px, 1.2fr) minmax(280px, 1fr);
+}
+
+.playlist-card,
+.now-playing-card {
+  background: linear-gradient(180deg, #1b1b1c 0%, #111 100%);
+  border-radius: 16px;
+  border: 1px solid #2c2c2c;
+}
+
+.playlist-card {
+  padding: 24px;
+}
+
+.playlist-head h1 {
+  font-size: 1.7rem;
+  margin-bottom: 4px;
+}
+
+.playlist-head p {
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.song-list {
+  display: grid;
+  gap: 10px;
+}
+
+.song-item {
+  display: grid;
+  grid-template-columns: 52px 1fr auto auto;
+  gap: 14px;
+  align-items: center;
+  background: var(--panel-soft);
+  padding: 10px 14px;
+  border-radius: 12px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.song-item:hover {
+  background: #2a2a2a;
+  transform: translateY(-1px);
+}
+
+.song-item.active {
+  outline: 1px solid rgba(29, 185, 84, 0.8);
+  background: #223127;
+}
+
+.song-item img {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.song-name {
+  font-weight: 500;
+}
+
+.song-duration {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.play-btn {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: #2f2f2f;
+  color: #fff;
+  cursor: pointer;
+}
+
+.play-btn:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.now-playing-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-cover {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+  opacity: 0.86;
+}
+
+.hero-meta {
+  margin-top: -104px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0.95) 100%);
+  padding: 48px 20px 20px;
+}
+
+.meta-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.hero-meta h2 {
+  margin-top: 6px;
+  font-size: 1.2rem;
+}
+
+.player-bar {
+  min-height: 90px;
+  background: #000;
+  border-top: 1px solid #2a2a2a;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 20px;
+}
+
+.player-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.player-left img {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+#footerTitle {
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+}
+
+#footerArtist {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.player-center {
+  display: grid;
+  gap: 8px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.controls button {
+  border: none;
+  background: #2d2d2d;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.controls .play {
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+}
+
+#progressBar {
+  width: 100%;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.player-right {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.playing-gif {
+  width: 26px;
+  height: 26px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.playing-gif.active {
+  opacity: 1;
+}
+
+.about-section {
+  padding: 0 24px 24px;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+.about-card {
+  position: relative;
+  background: linear-gradient(180deg, #181818 0%, #111 100%);
+  border: 1px solid #2c2c2c;
+  border-radius: 16px;
+  padding: 24px;
+  line-height: 1.7;
+}
+
+.close-about-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: #2f2f2f;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.close-about-btn:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.about-card h2 {
+  font-size: 1.65rem;
+  margin-bottom: 8px;
+}
+
+.about-card h3 {
+  margin-top: 18px;
+  margin-bottom: 8px;
+  color: #d5ffd8;
+}
+
+.about-card p {
+  color: #d8d8d8;
+  margin-bottom: 10px;
+}
+
+.about-card ul {
+  margin-left: 18px;
+  margin-bottom: 10px;
+}
+
+.about-card li {
+  color: #e2e2e2;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 980px) {
+  .topbar {
+    padding: 0 16px;
+  }
+
+  .app-shell {
+    padding: 16px;
+    grid-template-columns: 1fr;
+  }
+
+  .playlist-card {
+    padding: 18px;
+  }
+
+  .hero-cover {
+    min-height: 260px;
+  }
+
+  .player-bar {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .player-left,
+  .player-right {
+    justify-self: center;
+  }
+
+  #footerTitle {
+    max-width: 65vw;
+  }
+
+  .about-section {
+    padding: 0 16px 16px;
+  }
+
+  .about-card {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    height: auto;
+    padding: 12px 14px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  nav {
+    width: 100%;
     justify-content: space-between;
-    align-items: center;
-    border-radius: 34px;
+  }
+
+  nav a {
+    font-size: 0.88rem;
+  }
+
+  .app-shell {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .playlist-card {
+    padding: 14px;
+  }
+
+  .playlist-head h1 {
+    font-size: 1.35rem;
+  }
+
+  .song-item {
+    grid-template-columns: 46px 1fr auto;
+    gap: 10px;
+    padding: 9px 10px;
+  }
+
+  .song-item img {
+    width: 46px;
+    height: 46px;
+  }
+
+  .song-duration {
+    display: none;
+  }
+
+  .song-name {
+    font-size: 0.92rem;
+  }
+
+  .hero-cover {
+    min-height: 200px;
+  }
+
+  .hero-meta {
+    margin-top: -86px;
+    padding: 40px 14px 14px;
+  }
+
+  .hero-meta h2 {
+    font-size: 1rem;
+  }
+
+  .player-bar {
+    padding: 10px 12px 14px;
+  }
+
+  .player-left {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .player-left img {
+    width: 42px;
+    height: 42px;
+  }
+
+  #footerTitle {
+    font-size: 0.85rem;
+    max-width: 62vw;
+  }
+
+  .controls {
+    gap: 10px;
+  }
+
+  .controls button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .controls .play {
+    width: 40px;
+    height: 40px;
+  }
+
+  .player-right {
+    font-size: 0.78rem;
+  }
+
+  .about-section {
+    padding: 0 12px 12px;
+  }
+
+  .about-card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .close-about-btn {
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .about-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .about-card h3 {
+    font-size: 1rem;
+  }
+
+  .about-card p,
+  .about-card li {
+    font-size: 0.92rem;
+  }
 }
 
-.songItem img{
-    width: 43px;
-    margin: 0 23px;
+@media (max-width: 560px) {
+  .brand {
+    font-size: 1rem;
+  }
 
-}
+  .brand img {
+    width: 30px;
+    height: 30px;
+  }
 
-.timestamp{
-    margin: 0 23px;
+  .song-item {
+    border-radius: 10px;
+  }
+
+  .song-name {
+    font-size: 0.86rem;
+  }
+
+  .play-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hero-cover {
+    min-height: 165px;
+  }
+
+  .meta-label {
+    font-size: 0.76rem;
+  }
+
+  .hero-meta h2 {
+    font-size: 0.92rem;
+  }
+
+  #footerArtist {
+    font-size: 0.74rem;
+  }
+
+  .playing-gif {
+    width: 20px;
+    height: 20px;
+  }
 }
